@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -30,12 +31,9 @@ public class ListaEmpresasServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		List<Empresa> empresas = Banco.getEmpresas();
-		PrintWriter out = response.getWriter();
-		out.println("<html><body><ul>");
-		for (Empresa empresa : empresas) 
-		{
-			out.println("<li>" + empresa.getNome());
-		} 
+		request.setAttribute("empresas", empresas);
+		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
+		rd.forward(request, response);
 	}
 
 }

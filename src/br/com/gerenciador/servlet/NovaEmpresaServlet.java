@@ -3,6 +3,7 @@ package br.com.gerenciador.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,12 +30,17 @@ public class NovaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nomeEmpresa = request.getParameter("nome");
 		System.out.println("Cadastrando nova empresa: " + nomeEmpresa);
+		
 		Empresa empresa = new Empresa();
 		empresa.setNome(nomeEmpresa);
+		
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
-		PrintWriter out = response.getWriter();
-		out.println("<html><body><h1>Empresa " + nomeEmpresa + " cadastrada com sucesso.");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+		request.setAttribute("empresa", empresa.getNome());
+		rd.forward(request, response);
+		
 	}
 
 }
