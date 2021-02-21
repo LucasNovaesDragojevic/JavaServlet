@@ -1,7 +1,6 @@
 package br.com.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -28,7 +27,7 @@ public class ListaEmpresasServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		List<Empresa> empresas = Banco.getEmpresas();
 		request.setAttribute("empresas", empresas);
