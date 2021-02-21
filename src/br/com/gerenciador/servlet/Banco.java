@@ -5,25 +5,44 @@ import java.util.List;
 
 public class Banco
 {
-	private static List<Empresa> empresas = new ArrayList<>(); 
+	private static List<Empresa> EMPRESAS = new ArrayList<>();
+	private static Integer CHAVE_SEQUENCIAL = 1;
 	
 	static 
 	{
 		Empresa empresa1 = new Empresa();
 		Empresa empresa2 = new Empresa();
+		
 		empresa1.setNome("Alura");
 		empresa2.setNome("Caelum");
-		empresas.add(empresa1);
-		empresas.add(empresa2);
+		
+		add(empresa1);
+		add(empresa2);
 	}
 	
-	public void adiciona(Empresa empresa) 
+	public static void add(Empresa empresa) 
 	{
-		empresas.add(empresa);
+		empresa.setId(Banco.CHAVE_SEQUENCIAL++);
+		EMPRESAS.add(empresa);
 	}
 	
-	public static List<Empresa> getEmpresas() 
+	public static List<Empresa> list() 
 	{
-		return Banco.empresas;
+		return Banco.EMPRESAS;
+	}
+	
+	public static Empresa get(Integer id) 
+	{
+		for (Empresa empresa : EMPRESAS) 
+		{
+			if (empresa.getId().equals(id))
+				return empresa;
+		}
+		return null;
+	}
+
+	public static void remove(Integer id) 
+	{
+		Banco.EMPRESAS.remove(new Empresa(id));
 	}
 }

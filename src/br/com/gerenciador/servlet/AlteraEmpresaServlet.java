@@ -11,12 +11,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/nova-empresa")
-public class NovaEmpresaServlet extends HttpServlet 
+
+@WebServlet("/altera-empresa")
+public class AlteraEmpresaServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		Empresa empresa = Banco.get(Integer.valueOf(request.getParameter("id")));
 		String nomeEmpresa = request.getParameter("nome");
 		String data = request.getParameter("data");
 		Date dataAbertura = null;
@@ -31,12 +34,9 @@ public class NovaEmpresaServlet extends HttpServlet
 			throw new ServletException(e);
 		}
 		
-		Empresa empresa = new Empresa();
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
-
-		Banco.add(empresa);
 		
-		response.sendRedirect("lista-empresas");		
+		response.sendRedirect("lista-empresas");
 	}
 }

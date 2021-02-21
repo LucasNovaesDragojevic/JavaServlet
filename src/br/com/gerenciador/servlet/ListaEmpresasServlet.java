@@ -29,7 +29,7 @@ public class ListaEmpresasServlet extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		List<Empresa> empresas = Banco.getEmpresas();
+		List<Empresa> empresas = Banco.list();
 		request.setAttribute("empresas", empresas);
 		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
 		rd.forward(request, response);
