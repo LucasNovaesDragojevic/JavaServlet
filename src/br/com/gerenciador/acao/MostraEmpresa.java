@@ -1,20 +1,17 @@
-package br.com.gerenciador.servlet;
+package br.com.gerenciador.acao;
 
 import java.io.IOException;
 
+import br.com.gerenciador.model.Banco;
+import br.com.gerenciador.model.Empresa;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/mostra-empresa")
-public class MostraEmpresaServlet extends HttpServlet 
+public class MostraEmpresa 
 {
-	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		Empresa empresa = Banco.get(Integer.valueOf(request.getParameter("id")));
 		request.setAttribute("empresa", empresa);

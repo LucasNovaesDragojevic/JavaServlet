@@ -1,4 +1,4 @@
-package br.com.gerenciador.servlet;
+package br.com.gerenciador.model;
 
 import java.time.Instant;
 import java.util.Date;
