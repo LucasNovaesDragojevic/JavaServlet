@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/nova-empresa" var="novaEmpresa"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Cadastro empresa</title>
 </head>
 <body>
-	<c:if test="${not empty empresa}">
-		<h1>Empresa ${empresa} cadastrada.</h1>
-	</c:if>
-	<c:if test="${empty empresa}">
-		<h1>Nenhuma empresa cadastrada.</h1>
-	</c:if>
+	<form action="${novaEmpresa}" method="post">
+		Nome: <input name="nome">
+		Data de abertura: <input name="data">
+		<input type="submit">
+	</form>
 </body>
 </html>
