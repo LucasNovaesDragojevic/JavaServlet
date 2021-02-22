@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:import url="logout.jsp"/>
 	<c:if test="${not empty empresa}">
 		<h1>Empresa ${empresa} cadastrada.</h1>
 	</c:if>

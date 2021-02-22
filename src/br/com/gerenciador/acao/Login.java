@@ -16,10 +16,14 @@ public class Login implements Acao
 		Usuario usuario = Banco.getUsuario(request.getParameter("login"), request.getParameter("senha"));
 		
 		if (usuario != null)
+		{
+			request.getSession().setAttribute("usuario", usuario);
 			return "redirect:entrada?acao=ListaEmpresas";
+		}
 		else
+		{
 			return "redirect:entrada?acao=LoginForm";
-			
+		}	
 		
 	}
 }

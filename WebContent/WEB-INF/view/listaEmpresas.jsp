@@ -9,6 +9,7 @@
 <title>Lista de empresas</title>
 </head>
 <body>
+	<c:import url="logout.jsp"/>
 	<ul>
 		<c:forEach items="${empresas}" var="empresa">
 			<li>${empresa.nome} <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>

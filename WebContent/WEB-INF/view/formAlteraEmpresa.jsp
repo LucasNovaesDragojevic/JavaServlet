@@ -9,6 +9,7 @@
 <title>Cadastro empresa</title>
 </head>
 <body>
+	<c:import url="logout.jsp"/>
 	<form action="${alteraEmpresa}" method="post">
 		<input type="hidden" name="id" value="${empresa.id}">
 		Nome: <input name="nome" value="${empresa.nome}">
