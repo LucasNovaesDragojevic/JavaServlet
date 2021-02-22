@@ -19,16 +19,6 @@ public class EntradaServlet extends HttpServlet
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String paramAcao = request.getParameter("acao");
-		
-		Boolean usuarioDeslogado = request.getSession().getAttribute("usuario") == null;
-		Boolean ehAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
-		
-		if (usuarioDeslogado && ehAcaoProtegida)
-		{
-			response.sendRedirect("entrada?acao=LoginForm");
-			return;
-		}
-
 		String nomeClasse = "br.com.gerenciador.acao." + paramAcao;
 		String nome = null;
 		
